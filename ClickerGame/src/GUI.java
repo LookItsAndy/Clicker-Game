@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,14 +13,20 @@ public class GUI implements ActionListener {
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
-    private JButton button;
+    private JButton mainButton;
+    private JButton upgradeButton;
+
+    
 
     public GUI() {
 
         frame = new JFrame("Clicker Game");
 
-        button = new JButton("Click to get cash");
-        button.addActionListener(this);
+        mainButton = new JButton("Click to get cash");
+        mainButton.addActionListener(this);
+
+        upgradeButton = new JButton("Upgrade cash per click");
+        upgradeButton.addActionListener(this);
 
         label = new JLabel("Balance: " + Economy.balance);
 
@@ -29,8 +34,11 @@ public class GUI implements ActionListener {
         panel.setBorder(BorderFactory.createEmptyBorder(60, 60, 20, 60));
 
         // objects on window
-        panel.add(button);
+        panel.add(mainButton);
         panel.add(label);
+        panel.add(upgradeButton);
+        
+
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,8 +57,11 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         Economy.balance++;
+        
         label.setText("Balance: " + Economy.balance);
 
     }
+
+    
 
 }

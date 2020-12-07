@@ -1,7 +1,7 @@
 public class Economy {
     
-    public static int balance; {
-        balance = 0;
+    public static int balance = 0; {
+        
     }
 
     
