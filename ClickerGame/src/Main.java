@@ -11,11 +11,21 @@ import javax.swing.JPanel;
 
 public class Main {
 
-    JLabel balance;
+    //int for buttons
     int money;
-    ClickHandler cHandler = new ClickHandler();
-    Font font1;
+    int power = 1;
 
+    //labels
+    JLabel balance;
+    JLabel powerLevel;
+
+    //fonts
+    Font font1;
+    Font upgradesFont;
+    
+    //for action listener
+    ClickHandler cHandler = new ClickHandler();
+    PowerUpgrader pUpgrader = new PowerUpgrader();
 
     public static void main(String[] args) {
         new Main();
@@ -32,6 +42,7 @@ public class Main {
     public void Font() {
         
         font1 = new Font("Comic Sans MS", Font.PLAIN, 32);
+        upgradesFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         
 
     }
@@ -70,19 +81,39 @@ public class Main {
         rightPanel.setBackground(Color.blue);
         frame.add(rightPanel);
 
+        JButton pwrUpgrade = new JButton();
+        //pwrUpgrade.setBorder(null);
+        pwrUpgrade.addActionListener(pUpgrader);
+        rightPanel.add(pwrUpgrade);
+
+        powerLevel = new JLabel("Power" + "(" + power + ")");
+        powerLevel.setFont(upgradesFont);
+        pwrUpgrade.add(powerLevel);
+
         frame.setVisible(true);
     }
 
     public class ClickHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
 
-            int test = 5;
-            money += test;
+    
+            money += power;
             
             balance.setText("Balance: " + money);
             
 
         }
     }
+
+    public class PowerUpgrader implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            power++;
+            
+            powerLevel.setText("Power" + "(" + power + ")");
+            
+
+        }
+    }
+
 
 }
