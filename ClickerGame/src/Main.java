@@ -48,10 +48,15 @@ public class Main {
         mainPanel.setBackground(Color.darkGray);
         frame.add(mainPanel);
 
+        JPanel topPanel = new JPanel();
+        topPanel.setBounds(50, 100, 250, 50);
+        topPanel.setBackground(Color.darkGray);
+        frame.add(topPanel);
+
         balance = new JLabel("Balance: 0");
         balance.setFont(font1);
         balance.setForeground(Color.white);
-        mainPanel.add(balance);
+        topPanel.add(balance);
 
         JButton mainButton = new JButton();
         mainButton.setFocusPainted(false);
@@ -60,14 +65,22 @@ public class Main {
         mainButton.addActionListener(cHandler);
         mainPanel.add(mainButton);
 
+        JPanel rightPanel = new JPanel();
+        rightPanel.setBounds(500, 50, 150, 350);
+        rightPanel.setBackground(Color.blue);
+        frame.add(rightPanel);
+
         frame.setVisible(true);
     }
 
     public class ClickHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
 
-            money++;
+            int test = 5;
+            money += test;
+            
             balance.setText("Balance: " + money);
+            
 
         }
     }
